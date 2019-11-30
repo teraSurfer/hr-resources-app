@@ -1,0 +1,14 @@
+{
+    "trigger": true,
+    "modules": [
+        "add-to-group"
+    ],
+    "parentResource": "hrResources",
+    "functionName": "hrResourcesPostConfirmation",
+    "parentStack": "auth",
+    "triggerEnvs": "[]",
+    "triggerTemplate": "PostConfirmation.json.ejs",
+    "roleName": "hrResourcesPostConfirmation",
+    "skipEdit": true,
+    "resourceName": "hrResourcesPostConfirmation"
+}

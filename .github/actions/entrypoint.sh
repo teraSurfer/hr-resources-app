@@ -85,6 +85,7 @@ case $5 in
     \"secretAccessKey\":\"$AWS_SECRET_ACCESS_KEY\",\
     \"region\":\"$AWS_REGION\"\
     }"
+    
 
     PROVIDERS="{\
     \"awscloudformation\":$AWSCLOUDFORMATIONCONFIG\

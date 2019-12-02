@@ -1,7 +1,7 @@
 <template>
     <b-navbar :variant="variant" :class="classes" type="dark" toggleable="lg">
         <b-navbar-brand to="/">
-            <h6 class="mb-0">Human Resources</h6>
+            <h6 class="mb-0">Human Resources -1</h6>
         </b-navbar-brand>
         <b-navbar-toggle target="nav-collapse">
         </b-navbar-toggle>

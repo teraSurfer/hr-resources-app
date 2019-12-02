@@ -30,16 +30,30 @@ export default {
             type: "password"
           },
           {
-            label: "PhoneNumber",
+            label: "First Name",
+            // required: true,
+            key: "given_name",
+            displayOrder: 3,
+            type: "string"
+          },
+          {
+            label: "Last Name",
+            // required: true,
+            key: "family_name",
+            displayOrder: 4,
+            type: "string"
+          },
+          {
+            label: "Phone Number",
             key: "phone_number",
             required: true,
-            displayOrder: 3,
+            displayOrder: 6,
             type: "string"
           }
         ]
       }
     }
-  }),
+  })
 };
 </script>
 

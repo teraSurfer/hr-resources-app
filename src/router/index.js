@@ -7,6 +7,8 @@ Vue.use(VueRouter)
 
 function verifyLogin(to, from, next) {
   if(Store.getters['user_auth/loggedIn']) {
+    console.log(to);
+    if(to.name  === 'Dashboard') return next('/dashboard/home')
     next()
   } else {
     next('/login');
@@ -24,7 +26,7 @@ const routes = [
     name: 'login',
     beforeEnter: (to, from, next) => {
       if(Store.getters['user_auth/loggedIn']) {
-        next('/dashboard')
+        next('/dashboard/home')
       } else {
         next()
       }
@@ -33,9 +35,22 @@ const routes = [
   },
   {
     path: '/dashboard',
-    name: 'dashboard',
+    name: 'Dashboard',
     component: () => import('@/views/Dashboard.vue'),
     beforeEnter: (to, from, next) => verifyLogin(to, from, next),
+    children: [
+      {
+        path: 'home',
+        name: 'Home',
+        component: () => import('@/components/dashboard/home/Home.vue')
+      }
+    ]
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    beforeEnter: (to, from, next) => verifyLogin(to, from, next),
+    component: () => import('@/views/Profile.vue')
   }
 ]
 

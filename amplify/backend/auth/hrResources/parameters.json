@@ -24,12 +24,19 @@
     "userpoolClientGenerateSecret": true,
     "userpoolClientRefreshTokenValidity": "10",
     "userpoolClientWriteAttributes": [
+        "family_name",
+        "given_name",
+        "picture",
         "email",
         "phone_number"
     ],
     "userpoolClientReadAttributes": [
         "email",
-        "phone_number"
+        "family_name",
+        "gender",
+        "given_name",
+        "phone_number",
+        "picture"
     ],
     "userpoolClientLambdaRole": "hrResoba2ba543_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": true,
@@ -76,5 +83,6 @@
                 "Name"
             ]
         }
-    ]
+    ],
+    "adminQueryGroup": "SuperUsers"
 }

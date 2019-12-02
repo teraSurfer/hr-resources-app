@@ -6,7 +6,7 @@
     "autoVerifiedAttributes": [
         "email"
     ],
-    "mfaConfiguration": "OFF",
+    "mfaConfiguration": "OPTIONAL",
     "mfaTypes": [
         "SMS Text Message"
     ],
@@ -40,15 +40,14 @@
     "usernameAttributes": [
         "email"
     ],
-    "userPoolGroups": true,
-    "adminQueries": true,
+    "userPoolGroups": false,
+    "adminQueries": false,
     "triggers": "{\"PostConfirmation\":[\"add-to-group\"]}",
     "hostedUI": false,
     "userPoolGroupList": [
         "SuperUsers",
         "Users"
     ],
-    "adminQueryGroup": "SuperUsers",
     "authRoleArn": {
         "Fn::GetAtt": [
             "AuthRole",

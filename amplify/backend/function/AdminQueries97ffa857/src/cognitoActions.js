@@ -38,6 +38,20 @@ async function addUserToGroup(username, groupname) {
   }
 }
 
+async function createUserGroup(groupName, groupArn = '') {
+  try {
+    const result = await cognitoIdentityServiceProvider.createGroup({
+      GroupName: groupName,
+      UserPoolId: userPoolId,
+      RoleArn: groupArn
+    });
+    console.log(`Created group ${groupName} successfully.`);
+  } catch(err) {
+    console.log(`Failed to create group with name - ${groupName}`);
+    throw err;
+  }
+}
+
 
 async function removeUserFromGroup(username, groupname) {
   const params = {
@@ -242,4 +256,5 @@ module.exports = {
   listGroupsForUser,
   listUsersInGroup,
   signUserOut,
+  createUserGroup
 };

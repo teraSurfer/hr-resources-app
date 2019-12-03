@@ -4,7 +4,7 @@
     <b-card-group class="text-dark" deck>
       <departments />
       <salaries />
-      <b-card class="border-0 shadow-sm wh">hello</b-card>
+      <roles />
     </b-card-group>
     <b-card class="shadow-sm border-0 mt-2 hw" variant="white">
       <h4 class="text-dark text-center">All Users</h4>
@@ -28,12 +28,12 @@
         </template>
       </b-table>
       <b-btn-toolbar class="justify-content-between">
-        <p class="mb-0 text-muted small">Showing {{users.length}} rows</p>
+        <p class="mb-0 text-muted small">Fetched {{users.length}} rows</p>
         <b-btn-group class="xy">
           <b-btn
             size="sm"
             @click="loadUsers('back')"
-            :disabled="!tokens[tokens.length - 2] || (tokens[tokens.length-2] ==='' && !reachedEnd)"
+            :disabled="current == 1"
             variant="outline-dark"
           >
             <fa icon="chevron-left" />
@@ -61,10 +61,12 @@
 <script>
 import Departments from "./Departments";
 import Salaries from "./Salaries";
+import Roles from "./Roles";
 export default {
   components: {
     Departments,
-    Salaries
+    Salaries,
+    Roles
   },
   data: () => ({
     users: [],
@@ -102,6 +104,7 @@ export default {
       { value: 25, text: "25 Rows" }
     ],
     tokens: [""],
+    current: 0,
     reachedEnd: false,
     selectedRow: {}
   }),
@@ -113,9 +116,9 @@ export default {
       this.isLoading = true;
       let token = "";
       if (direction === "next") {
-        token = this.tokens[this.tokens.length - 1];
+        token = this.tokens[this.current];
       } else {
-        token = this.tokens[this.tokens.length - 2];
+        token = this.tokens[this.current-1];
       }
       console.log(this.limit, token);
       const response = await this.$Amplify.API.get(
@@ -132,12 +135,15 @@ export default {
       );
       if (response.NextToken && direction === "next") {
         this.tokens.push(response.NextToken);
-      } else {
+      } 
+      else {
         this.reachedEnd = true;
       }
       if (direction !== "next" && this.reachedEnd) {
         this.reachedEnd = false;
       }
+      if(direction !== 'next') --this.current;
+      else ++this.current;
       this.processUsers(response.Users);
       this.isLoading = false;
     },

@@ -7,9 +7,8 @@ Vue.use(VueRouter)
 
 function verifyLogin(to, from, next) {
   if(Store.getters['user_auth/loggedIn']) {
-    console.log(to);
     if(to.name  === 'Dashboard') return next('/dashboard/home')
-    next()
+    else next()
   } else {
     next('/login');
   }
@@ -43,6 +42,11 @@ const routes = [
         path: 'home',
         name: 'Home',
         component: () => import('@/components/dashboard/home/Home.vue')
+      },
+      {
+        path: 'departments',
+        name: 'Departments',
+        compoent: () => import('@/components/dashboard/departments/Departments.vue')
       }
     ]
   },

@@ -9,7 +9,7 @@
         <b-nav-item to="/">Home</b-nav-item>
         <b-nav-item v-if="!isLoggedIn" to="/login">Login</b-nav-item>
         <b-nav-item v-if="isLoggedIn" to="/dashboard/home">Dashboard</b-nav-item>
-        <b-nav-item-dropdown v-if="isLoggedIn" :text="username">
+        <b-nav-item-dropdown right v-if="isLoggedIn" :text="username">
           <b-dropdown-item to="/profile">Profile</b-dropdown-item>
           <b-dropdown-item @click="logout">Logout</b-dropdown-item>
         </b-nav-item-dropdown>

@@ -1,48 +1,36 @@
 <template>
-  <b-card class="border-0 shadow-sm wh" header-bg-variant="primary">
+  <b-card
+    class="border-0 shadow-sm wh"
+    header-bg-variant="primary"
+    footer-bg-variant="white"
+    footer-border-variant="0 text-center"
+  >
     <template v-slot:header>
-      <h6 class="mb-0 text-center text-white">Departments</h6>
+      <h6 class="mb-0 text-center text-white">Department Mangement</h6>
     </template>
-    <commit-chart :data="datas" :styles="styles"/>
+    <div class="d-flex text-center">
+    <p class="small">Departments: </p>
+    <h3 class="display-2 mb-0 mt-4 text-primary">{{count}}</h3>
+    </div>
+    <template v-slot:footer>
+      <b-btn size="sm" to="/dashboard/departments" variant="primary">View Departments</b-btn>
+    </template>
   </b-card>
 </template>
 
 <script>
-import CommitChart from "./charts/CommitChart";
 export default {
-  components: {
-    CommitChart
-  },
-  data() {
-    return {
-      styles: {
-        height: '100%',
-        position: 'relative'
-      },
-      datas: {
-        labels: [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July",
-          "August",
-          "September",
-          "October",
-          "November",
-          "December"
-        ],
-        datasets: [
-          {
-            label: "GitHub Commits",
-            backgroundColor: "#6d74d8",
-            data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
-          }
-        ]
-      }
-    };
+  data: () => ({
+    count: 0
+  }),
+  async mounted() {
+    try {
+      let response = await this.$Amplify.API.get('hrapi', '/departments/total-departments');
+      console.log(response);
+      this.count = response;
+    } catch(err) {
+      console.warn(err);
+    }
   }
 };
 </script>

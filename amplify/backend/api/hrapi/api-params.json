@@ -1,0 +1,67 @@
+{
+    "paths": [
+        {
+            "name": "/departments",
+            "lambdaFunction": "deparments",
+            "privacy": {
+                "userPoolGroups": {
+                    "SuperUsers": [
+                        "/POST",
+                        "/GET",
+                        "/PUT",
+                        "/PATCH",
+                        "/DELETE"
+                    ],
+                    "Users": [
+                        "/GET"
+                    ]
+                }
+            }
+        }
+    ],
+    "resourceName": "hrapi",
+    "apiName": "hrapi",
+    "authResourceName": "hrResources",
+    "functionArns": [
+        {
+            "lambdaFunction": "deparments"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-hr-resources-app-dev-134601-authRole",
+        "unAuthRoleName": "amplify-hr-resources-app-dev-134601-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "deparments",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        },
+        {
+            "category": "auth",
+            "resourceName": "hrResources",
+            "attributes": [
+                "UserPoolId"
+            ]
+        },
+        {
+            "category": "auth",
+            "resourceName": "userPoolGroups",
+            "attributes": [
+                "SuperUsersGroupRole"
+            ]
+        },
+        {
+            "category": "auth",
+            "resourceName": "userPoolGroups",
+            "attributes": [
+                "UsersGroupRole"
+            ]
+        }
+    ]
+}

@@ -46,7 +46,7 @@ const routes = [
       {
         path: 'departments',
         name: 'Departments',
-        compoent: () => import('@/components/dashboard/departments/Departments.vue')
+        component: () => import('@/components/dashboard/departments/Departments.vue')
       }
     ]
   },

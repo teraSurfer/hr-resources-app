@@ -108,6 +108,31 @@ app.get(path, function (req, res) {
     }
   })
 })
+
+app.patch(path+'/object/:id', function (req, res) {
+  let updateItemParams = {
+    TableName: tableName,
+    Key: {
+      department_id: req.params.id
+    },
+    UpdateExpression: "SET #DN = :DN",
+    ExpressionAttributeNames: {
+      "#DN": "department_name"
+    },
+    ExpressionAttributeValues: {
+      ":DN": req.body.department_name
+    }
+  };
+  dynamodb.update(updateItemParams, (err, data) => {
+    if(err) {
+      res.statusCode = 500;
+      res.json({ error: err})
+    } else {
+      res.statusCode = 201;
+      res.json({message: 'Updated successfully.', data: data});
+    }
+  })
+})
 /********************************
  * HTTP Get method for list objects *
  ********************************/

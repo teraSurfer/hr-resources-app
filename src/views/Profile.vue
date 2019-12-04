@@ -8,7 +8,7 @@
       <template v-slot:header>
         <h3 class="mb-0 text-white">User Profile</h3>
       </template>
-      <b-img-lazy class="rounded-circle" src="https://picsum.photos/150/150/?image=25">
+      <b-img-lazy class="rounded-circle" src="https://randomuser.me/api/portraits/lego/2.jpg">
       </b-img-lazy>
       <b-card-text >
         <h4 class="my-3">{{user.given_name}} {{user.family_name}}</h4>

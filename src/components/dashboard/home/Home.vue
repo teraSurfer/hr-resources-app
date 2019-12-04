@@ -118,7 +118,7 @@ export default {
       if (direction === "next") {
         token = this.tokens[this.current];
       } else {
-        token = this.tokens[this.current-1];
+        token = this.tokens[this.current - 1];
       }
       console.log(this.limit, token);
       const response = await this.$Amplify.API.get(
@@ -135,14 +135,13 @@ export default {
       );
       if (response.NextToken && direction === "next") {
         this.tokens.push(response.NextToken);
-      } 
-      else {
+      } else {
         this.reachedEnd = true;
       }
       if (direction !== "next" && this.reachedEnd) {
         this.reachedEnd = false;
       }
-      if(direction !== 'next') --this.current;
+      if (direction !== "next") --this.current;
       else ++this.current;
       this.processUsers(response.Users);
       this.isLoading = false;

@@ -12,6 +12,36 @@
                         "/PATCH",
                         "/DELETE"
                     ],
+                    "Managers": [
+                        "/POST",
+                        "/GET",
+                        "/PUT",
+                        "/PATCH"
+                    ],
+                    "Users": [
+                        "/GET"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "/salaries",
+            "lambdaFunction": "Salaries",
+            "privacy": {
+                "userPoolGroups": {
+                    "SuperUsers": [
+                        "/POST",
+                        "/GET",
+                        "/PUT",
+                        "/PATCH",
+                        "/DELETE"
+                    ],
+                    "Managers": [
+                        "/POST",
+                        "/GET",
+                        "/PUT",
+                        "/PATCH"
+                    ],
                     "Users": [
                         "/GET"
                     ]
@@ -25,6 +55,9 @@
     "functionArns": [
         {
             "lambdaFunction": "deparments"
+        },
+        {
+            "lambdaFunction": "Salaries"
         }
     ],
     "privacy": {
@@ -60,8 +93,24 @@
             "category": "auth",
             "resourceName": "userPoolGroups",
             "attributes": [
+                "ManagersGroupRole"
+            ]
+        },
+        {
+            "category": "auth",
+            "resourceName": "userPoolGroups",
+            "attributes": [
                 "UsersGroupRole"
             ]
+        },
+        {
+            "category": "function",
+            "resourceName": "Salaries",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
         }
-    ]
+    ],
+    "uuid": "e396faa3"
 }

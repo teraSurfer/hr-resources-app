@@ -26,7 +26,6 @@ const {
   listGroupsForUser,
   listUsersInGroup,
   signUserOut,
-  createUserGroup
 } = require('./cognitoActions');
 
 const app = express();
@@ -44,7 +43,7 @@ app.use((req, res, next) => {
 // Only perform tasks if the user is in a specific group
 const allowedGroup = process.env.GROUP;
 
-const checkGroup = function (req, res, next) {
+const checkGroup = function(req, res, next) {
   if (req.path == '/signUserOut') {
     return next();
   }
@@ -164,7 +163,7 @@ app.get('/listUsers', async (req, res, next) => {
   try {
     let response;
     if (req.query.token) {
-      response = await listUsers(req.query.limit || 25, decodeURI(req.query.token));
+      response = await listUsers(req.query.limit || 25, req.query.token);
     } else if (req.query.limit) {
       response = await listUsers((Limit = req.query.limit));
     } else {
@@ -243,23 +242,6 @@ app.post('/signUserOut', async (req, res, next) => {
     next(err);
   }
 });
-
-app.post('/create-user-group', async (req, res, next) => {
-  if (req.body.groupName === '') {
-    const err = new Error('Group name is required');
-    err.statusCode = 400;
-    return next(err)
-  }
-  try {
-    const response = await createUserGroup(
-      req.body.groupName, 
-      req.body.roleArn === '' ? '' : req.body.roleArn
-    );
-    res.status(200).json(response);
-  }catch(err) {
-    next(err);
-  }
-})
 
 // Error middleware must be defined last
 app.use((err, req, res, next) => {

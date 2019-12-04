@@ -4,7 +4,11 @@
         "precedence": 1
     },
     {
-        "groupName": "Users",
+        "groupName": "Managers",
         "precedence": 2
+    },
+    {
+        "groupName": "Users",
+        "precedence": 3
     }
 ]

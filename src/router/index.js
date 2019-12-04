@@ -45,8 +45,19 @@ const routes = [
       },
       {
         path: 'departments',
-        name: 'Departments',
-        component: () => import('@/components/dashboard/departments/Departments.vue')
+        component: () => import('@/components/dashboard/departments/Departments.vue'),
+        children: [
+          {
+            path: '',
+            name: 'Find Department',
+            component: () => import('@/components/dashboard/departments/FindDepartment.vue')
+          },
+          {
+            path: 'new',
+            name: 'New Department',
+            component: () => import('@/components/dashboard/departments/NewDepartment.vue')
+          }
+        ]
       }
     ]
   },

@@ -53,6 +53,7 @@
     "hostedUI": false,
     "userPoolGroupList": [
         "SuperUsers",
+        "Managers",
         "Users"
     ],
     "authRoleArn": {

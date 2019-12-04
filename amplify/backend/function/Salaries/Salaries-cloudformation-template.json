@@ -4,14 +4,6 @@
 	"Parameters": {
 		"env": {
 			"Type": "String"
-		},
-		"storagedepartmentsName": {
-			"Type": "String",
-			"Default": "storagedepartmentsName"
-		},
-		"storagedepartmentsArn": {
-			"Type": "String",
-			"Default": "storagedepartmentsArn"
 		}
 	},
 	"Conditions": {
@@ -36,12 +28,12 @@
 				"FunctionName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"deparments",
+						"salaries",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"deparments",
+									"salaries",
 									"-",
 									{
 										"Ref": "env"
@@ -71,7 +63,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-hr-resources-app-dev-134601-deployment",
-					"S3Key": "amplify-builds/deparments-50536146514543624b71-build.zip"
+					"S3Key": "amplify-builds/Salaries-4b56542f375432653239-build.zip"
 				}
 			}
 		},
@@ -81,12 +73,12 @@
 				"RoleName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"hrresourcesappLambdaRole9e229b44",
+						"hrresourcesappLambdaRoleaff06b76",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"hrresourcesappLambdaRole9e229b44",
+									"hrresourcesappLambdaRoleaff06b76",
 									"-",
 									{
 										"Ref": "env"
@@ -152,33 +144,6 @@
 									}
 								]
 							}
-						},
-						{
-							"Effect": "Allow",
-							"Action": [
-								"dynamodb:GetItem",
-								"dynamodb:Query",
-								"dynamodb:Scan",
-								"dynamodb:PutItem",
-								"dynamodb:UpdateItem",
-								"dynamodb:DeleteItem"
-							],
-							"Resource": [
-								{
-									"Ref": "storagedepartmentsArn"
-								},
-								{
-									"Fn::Join": [
-										"/",
-										[
-											{
-												"Ref": "storagedepartmentsArn"
-											},
-											"index/*"
-										]
-									]
-								}
-							]
 						}
 					]
 				}

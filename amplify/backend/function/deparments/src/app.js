@@ -109,27 +109,33 @@ app.get(path, function (req, res) {
   })
 })
 
-app.patch(path+'/object/:id', function (req, res) {
+app.patch(path + '/object/:id/:name', function (req, res) {
   let updateItemParams = {
     TableName: tableName,
     Key: {
-      department_id: req.params.id
+      "department_id": req.params.id,
+      "department_name": req.params.name
     },
-    UpdateExpression: "SET #DN = :DN",
-    ExpressionAttributeNames: {
-      "#DN": "department_name"
-    },
-    ExpressionAttributeValues: {
-      ":DN": req.body.department_name
-    }
   };
-  dynamodb.update(updateItemParams, (err, data) => {
-    if(err) {
+  dynamodb.delete(updateItemParams, (err) => {
+    if (err) {
       res.statusCode = 500;
-      res.json({ error: err})
+      return res.json({ error: err })
     } else {
-      res.statusCode = 201;
-      res.json({message: 'Updated successfully.', data: data});
+      dynamodb.put({
+        TableName: tableName,
+        Item: {
+          department_id: req.params.id,
+          department_name: req.body.department_name
+        }
+      }, (err, data) => {
+        if (err) {
+          res.statusCode = 500;
+          return res.json({ error: err })
+        }
+        res.statusCode = 201;
+        res.json({ message: 'Updated successfully.', data: data });
+      })
     }
   })
 })

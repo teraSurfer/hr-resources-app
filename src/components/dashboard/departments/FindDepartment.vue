@@ -86,7 +86,11 @@
         </b-form-group>
         <b-form-group class="form" label="Department Name:">
           <b-input-group>
-            <b-input v-model="selectedRow.department_name" class="border-primary" placeholder="Department Name"></b-input>
+            <b-input
+              v-model="selectedRow.department_name"
+              class="border-primary"
+              placeholder="Department Name"
+            ></b-input>
           </b-input-group>
         </b-form-group>
         <div class="d-flex justify-content-center">
@@ -192,12 +196,43 @@ export default {
       }
     },
     update(dep) {
-      this.selectedRow = dep.item;
+      this.selectedRow = {
+        department_id: dep.item.department_id,
+        department_name: dep.item.department_name,
+        old_name: dep.item.department_name
+      };
       console.log(this.selectedRow);
       this.$bvModal.show("dep-modal");
     },
-    formSubmit() {
-      
+    async formSubmit() {
+      this.loading = true;
+      try {
+        let response = await this.$Amplify.API.patch(
+          "hrapi",
+          `/departments/object/${this.selectedRow.department_id}/${this.selectedRow.old_name}`,
+          {
+            body: {
+              department_name: this.selectedRow.department_name
+            }
+          }
+        );
+        console.log(response);
+        this.loading = false;
+        this.$bvModal.hide("dep-modal");
+        swal({
+          title: "Updated Successfully",
+          icon: "success"
+        })
+        this.loadDepartments("back");
+      } catch (err) {
+        console.log(err);
+        swal({
+          title: "Oh no!",
+          text: "Something went wrong. Please try again.",
+          icon: "error"
+        });
+        this.loading = false;
+      }
     }
   }
 };

@@ -1,6 +1,9 @@
 <template>
-  <b-container class="d-flex justify-content-center mt-4 align-items-center content">
+  <b-container class="d-flex flex-column justify-content-center mt-4 align-items-center content">
     <amplify-authenticator :authConfig="authConfig"></amplify-authenticator>
+    <b-btn size="sm" @click="signIn" variant="danger">
+      Login with google <fa :icon="['fab', 'google']" />
+    </b-btn>
   </b-container>
 </template>
 
@@ -53,7 +56,13 @@ export default {
         ]
       }
     }
-  })
+  }),
+  methods: {
+     async signIn() {
+      const response =  await this.$Amplify.Auth.federatedSignIn({provider: 'Google'});
+      console.log(response);
+    }
+  }
 };
 </script>
 

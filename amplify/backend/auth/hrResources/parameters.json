@@ -43,14 +43,14 @@
     "useDefault": "manual",
     "authSelections": "identityPoolAndUserPool",
     "resourceName": "hrResources",
-    "thirdPartyAuth": false,
+    "thirdPartyAuth": true,
     "usernameAttributes": [
         "email"
     ],
     "userPoolGroups": false,
     "adminQueries": false,
     "triggers": "{\"PostConfirmation\":[\"add-to-group\"]}",
-    "hostedUI": false,
+    "hostedUI": true,
     "userPoolGroupList": [
         "SuperUsers",
         "Managers",
@@ -85,5 +85,13 @@
             ]
         }
     ],
-    "adminQueryGroup": "SuperUsers"
+    "authProviders": [
+        "accounts.google.com"
+    ],
+    "hostedUIDomainName": "hr-resources",
+    "authProvidersUserPool": [
+        "Google"
+    ],
+    "hostedUIProviderMeta": "[{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"phone_number\":\"phoneNumbers\",\"username\":\"sub\"}}]",
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"implicit\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://hr.terasurfer.com/logged-in/\"],\"LogoutURLs\":[\"https://hr.terasurfer.com/signout/\"]}"
 }

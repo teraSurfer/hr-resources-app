@@ -17,7 +17,10 @@
                 }
             },
             "auth": {
-                "hrResources": {}
+                "hrResources": {
+                    "googleClientId": "621492998975-6do6ljku0ddqkf5dtakn7ifvjq5ifteb.apps.googleusercontent.com",
+                    "hostedUIProviderCreds": "[{\"ProviderName\":\"Google\",\"client_id\":\"621492998975-6do6ljku0ddqkf5dtakn7ifvjq5ifteb.apps.googleusercontent.com\",\"client_secret\":\"9A_NatZuzwM5ew8humdZYjAd\"}]"
+                }
             }
         }
     }

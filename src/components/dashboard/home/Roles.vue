@@ -13,7 +13,7 @@
       <h3 class="display-2 mb-0 mt-4 text-primary">{{count}}</h3>
     </div>
     <template v-slot:footer>
-      <b-btn size="sm" variant="primary">View Users</b-btn>
+      <b-btn size="sm" to="/dashboard/users" variant="primary">View Users</b-btn>
     </template>
   </b-card>
 </template>

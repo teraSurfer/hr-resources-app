@@ -70,14 +70,14 @@ const checkGroup = function(req, res, next) {
 
 app.all('*', checkGroup);
 
-app.post('/addUserToDepartment', async (req, res, next) => {
-  if(!req.body.username || !req.body.department_name) {
-    const err = new Error('username and groupname are required');
+app.post('/updateAttributes', async (req, res, next) => {
+  if(!req.body.username || !req.body.attributes) {
+    const err = new Error('username and attributes are required');
     err.statusCode = 400;
     return next(err);
   }
   try{
-    const response = await adminAddUserToDepartment(req.body.username, req.body.department_name);
+    const response = await adminAddUserToDepartment(req.body.username, req.body.attributes);
     res.status(200).json(response);
   } catch (err) {
     next(err);

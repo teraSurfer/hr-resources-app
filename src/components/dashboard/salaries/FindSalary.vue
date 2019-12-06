@@ -6,6 +6,9 @@
           <b-btn @click="back" size="sm" variant="transparent mr-2 rounded-circle">
             <fa icon="arrow-left" />
           </b-btn>
+          <b-btn size="sm" @click="triggerPayroll" class="rounded-0 ml-2" variant="dark">
+            Trigger Payroll
+          </b-btn>
         </b-btn-group>
         <h6 class="mb-0">Payroll</h6>
         <b-input-group size="sm">
@@ -34,11 +37,15 @@
           <b-spinner type="grow" class="align-middle"></b-spinner>
         </div>
       </template>
+      <template v-slot:cell(salary)="data">
+        $ {{data.item.salary}}
+      </template>
      </b-table>
     </b-card>
 </template>
 
 <script>
+import swal from 'sweetalert';
 export default {
     data: () => ({
         tableHeaders: [
@@ -63,6 +70,11 @@ export default {
             const response = await this.$Amplify.API.get("hrapi", `/salaries?limit=${this.limit}`);
             this.salaries = response;
             this.isLoading = false;
+        },
+        triggerPayroll() {
+          setTimeout(() => {
+            swal("Success", "Payroll job is now running", "success")
+          }, 2500);
         }
     }
 }

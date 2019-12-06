@@ -231,13 +231,14 @@ async function signUserOut(username) {
   }
 }
 
-async function adminAddUserToDepartment(username, department) {
+async function adminAddUserToDepartment(username, userAttributes) {
   const params = {
     UserPoolId: userPoolId,
     Username: username,
-    UserAttributes: [
-      { Name: 'custom:department', Value: department }
-    ]
+    UserAttributes: userAttributes,
+    // [
+    //   { Name: 'custom:department', Value: department }
+    // ]
   };
   try {
     const result = await cognitoIdentityServiceProvider.adminUpdateUserAttributes(params).promise();

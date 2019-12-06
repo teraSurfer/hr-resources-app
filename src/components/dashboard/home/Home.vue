@@ -103,7 +103,7 @@ export default {
     ],
     limit: 5,
     options: [
-      { value: 5, text: "5 Row" },
+      { value: 5, text: "5 Rows" },
       { value: 10, text: "10 Rows" },
       { value: 25, text: "25 Rows" }
     ],

@@ -68,7 +68,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-hr-resources-app-dev-134601-deployment",
-					"S3Key": "amplify-builds/AdminQueries97ffa857-6237446d4c4f2f4a5075-build.zip"
+					"S3Key": "amplify-builds/AdminQueries97ffa857-4d425037415a7235442f-build.zip"
 				}
 			}
 		},

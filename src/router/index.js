@@ -69,6 +69,17 @@ const routes = [
             component: () => import('@/components/dashboard/salaries/FindSalary.vue')
           }
         ]
+      },
+      {
+        path: 'users',
+        component: () => import('@/components/dashboard/users/Users.vue'),
+        children: [
+          {
+            path: '',
+            name: 'User Management',
+            component: () => import('@/components/dashboard/users/UpdateUsers.vue')
+          }
+        ]
       }
     ]
   },

@@ -6,8 +6,8 @@ import Store from '../store';
 Vue.use(VueRouter)
 
 function verifyLogin(to, from, next) {
-  if(Store.getters['user_auth/loggedIn']) {
-    if(to.name  === 'Dashboard') return next('/dashboard/home')
+  if (Store.getters['user_auth/loggedIn']) {
+    if (to.name === 'Dashboard') return next('/dashboard/home')
     else next()
   } else {
     next('/login');
@@ -24,7 +24,7 @@ const routes = [
     path: '/login',
     name: 'login',
     beforeEnter: (to, from, next) => {
-      if(Store.getters['user_auth/loggedIn']) {
+      if (Store.getters['user_auth/loggedIn']) {
         next('/dashboard/home')
       } else {
         next()
@@ -56,6 +56,17 @@ const routes = [
             path: 'new',
             name: 'New Department',
             component: () => import('@/components/dashboard/departments/NewDepartment.vue')
+          }
+        ]
+      },
+      {
+        path: 'salaries',
+        component: () => import('@/components/dashboard/salaries/Salaries.vue'),
+        children: [
+          {
+            path: '',
+            name: 'Payroll',
+            component: () => import('@/components/dashboard/salaries/FindSalary.vue')
           }
         ]
       }

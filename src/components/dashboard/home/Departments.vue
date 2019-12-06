@@ -8,8 +8,8 @@
     <template v-slot:header>
       <h6 class="mb-0 text-center text-white">Department Mangement</h6>
     </template>
-    <div class="d-flex text-center">
-    <p class="small">Departments: </p>
+    <div class="text-center">
+    <p class="font-weight-bold">Departments </p>
     <h3 class="display-2 mb-0 mt-4 text-primary">{{count}}</h3>
     </div>
     <template v-slot:footer>

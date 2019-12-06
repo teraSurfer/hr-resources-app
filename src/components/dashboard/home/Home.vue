@@ -91,6 +91,10 @@ export default {
       {
         key: "sub",
         label: "User ID"
+      },
+      {
+        key: "custom:department",
+        label: "Department"
       }
     ],
     items: [
@@ -143,6 +147,7 @@ export default {
       }
       if (direction !== "next") --this.current;
       else ++this.current;
+      console.log(response)
       this.processUsers(response.Users);
       this.isLoading = false;
     },

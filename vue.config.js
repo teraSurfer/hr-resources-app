@@ -25,7 +25,6 @@ module.exports = {
               'b-carousel-slide': 'img-src',
               'b-embed': 'src'
             }
-    
             return options
           })
       }

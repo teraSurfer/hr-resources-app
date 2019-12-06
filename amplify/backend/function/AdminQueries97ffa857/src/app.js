@@ -26,6 +26,7 @@ const {
   listGroupsForUser,
   listUsersInGroup,
   signUserOut,
+  adminAddUserToDepartment
 } = require('./cognitoActions');
 
 const app = express();
@@ -68,6 +69,20 @@ const checkGroup = function(req, res, next) {
 };
 
 app.all('*', checkGroup);
+
+app.post('/addUserToDepartment', async (req, res, next) => {
+  if(!req.body.username || !req.body.department_name) {
+    const err = new Error('username and groupname are required');
+    err.statusCode = 400;
+    return next(err);
+  }
+  try{
+    const response = await adminAddUserToDepartment(req.body.username, req.body.department_name);
+    res.status(200).json(response);
+  } catch (err) {
+    next(err);
+  }
+})
 
 app.post('/addUserToGroup', async (req, res, next) => {
   if (!req.body.username || !req.body.groupname) {

@@ -14,7 +14,10 @@
             "function": {
                 "hrResourcesPostConfirmation": {
                     "GROUP": "Users"
-                }
+                },
+                "AdminQueries97ffa857": {},
+                "deparments": {},
+                "Salaries": {}
             },
             "auth": {
                 "hrResources": {

@@ -177,10 +177,10 @@ async function listGroupsForUser(username, Limit, NextToken) {
      */
     result.Groups.forEach((val) => {
       delete val.UserPoolId,
-      delete val.LastModifiedDate,
-      delete val.CreationDate,
-      delete val.Precedence,
-      delete val.RoleArn;
+        delete val.LastModifiedDate,
+        delete val.CreationDate,
+        delete val.Precedence,
+        delete val.RoleArn;
     });
 
     return result;
@@ -231,6 +231,22 @@ async function signUserOut(username) {
   }
 }
 
+async function adminAddUserToDepartment(username, userAttributes) {
+  const params = {
+    UserPoolId: userPoolId,
+    Username: username,
+    UserAttributes: userAttributes,
+    // [
+    //   { Name: 'custom:department', Value: department }
+    // ]
+  };
+  try {
+    const result = await cognitoIdentityServiceProvider.adminUpdateUserAttributes(params).promise();
+  } catch (err) {
+    throw err;
+  }
+}
+
 module.exports = {
   addUserToGroup,
   removeUserFromGroup,
@@ -242,4 +258,5 @@ module.exports = {
   listGroupsForUser,
   listUsersInGroup,
   signUserOut,
+  adminAddUserToDepartment
 };

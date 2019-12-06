@@ -1,0 +1,7 @@
+{
+    "tableName": "collections",
+    "partitionKeyName": "collection_name",
+    "partitionKeyType": "S",
+    "sortKeyName": "collection_size",
+    "sortKeyType": "N"
+}

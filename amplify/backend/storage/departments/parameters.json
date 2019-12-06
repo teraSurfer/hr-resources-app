@@ -1,0 +1,7 @@
+{
+    "tableName": "departments",
+    "partitionKeyName": "department_id",
+    "partitionKeyType": "S",
+    "sortKeyName": "department_name",
+    "sortKeyType": "S"
+}

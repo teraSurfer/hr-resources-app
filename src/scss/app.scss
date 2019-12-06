@@ -1,0 +1,33 @@
+@import './variables';
+
+@import '~bootstrap/scss/bootstrap.scss';
+
+.dropdown-toggle-no-caret::after {
+    content: none;
+}
+
+
+html, body{
+    height: 100%;
+}
+
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .3s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+}
+
+.Button__button___1FrBC {
+    background: $primary;
+}
+.Button__button___1FrBC:focus {
+    background: $accent;
+}
+.nav-link.router-link-exact-active {
+    border-bottom: 2px solid white;
+}
+
+.modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.3);
+ }

@@ -6,7 +6,7 @@
     "autoVerifiedAttributes": [
         "email"
     ],
-    "mfaConfiguration": "OFF",
+    "mfaConfiguration": "OPTIONAL",
     "mfaTypes": [
         "SMS Text Message"
     ],
@@ -24,31 +24,38 @@
     "userpoolClientGenerateSecret": true,
     "userpoolClientRefreshTokenValidity": "10",
     "userpoolClientWriteAttributes": [
+        "family_name",
+        "given_name",
+        "picture",
         "email",
         "phone_number"
     ],
     "userpoolClientReadAttributes": [
         "email",
-        "phone_number"
+        "family_name",
+        "gender",
+        "given_name",
+        "phone_number",
+        "picture"
     ],
     "userpoolClientLambdaRole": "hrResoba2ba543_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": true,
     "useDefault": "manual",
     "authSelections": "identityPoolAndUserPool",
     "resourceName": "hrResources",
-    "thirdPartyAuth": false,
+    "thirdPartyAuth": true,
     "usernameAttributes": [
         "email"
     ],
-    "userPoolGroups": true,
-    "adminQueries": true,
+    "userPoolGroups": false,
+    "adminQueries": false,
     "triggers": "{\"PostConfirmation\":[\"add-to-group\"]}",
-    "hostedUI": false,
+    "hostedUI": true,
     "userPoolGroupList": [
         "SuperUsers",
+        "Managers",
         "Users"
     ],
-    "adminQueryGroup": "SuperUsers",
     "authRoleArn": {
         "Fn::GetAtt": [
             "AuthRole",
@@ -77,5 +84,14 @@
                 "Name"
             ]
         }
-    ]
+    ],
+    "authProviders": [
+        "accounts.google.com"
+    ],
+    "hostedUIDomainName": "hr-resources",
+    "authProvidersUserPool": [
+        "Google"
+    ],
+    "hostedUIProviderMeta": "[{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"phone_number\":\"phoneNumbers\",\"username\":\"sub\"}}]",
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"implicit\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://hr.terasurfer.com/logged-in/\"],\"LogoutURLs\":[\"https://hr.terasurfer.com/signout/\"]}"
 }

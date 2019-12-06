@@ -1,0 +1,116 @@
+{
+    "paths": [
+        {
+            "name": "/departments",
+            "lambdaFunction": "deparments",
+            "privacy": {
+                "userPoolGroups": {
+                    "SuperUsers": [
+                        "/POST",
+                        "/GET",
+                        "/PUT",
+                        "/PATCH",
+                        "/DELETE"
+                    ],
+                    "Managers": [
+                        "/POST",
+                        "/GET",
+                        "/PUT",
+                        "/PATCH"
+                    ],
+                    "Users": [
+                        "/GET"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "/salaries",
+            "lambdaFunction": "Salaries",
+            "privacy": {
+                "userPoolGroups": {
+                    "SuperUsers": [
+                        "/POST",
+                        "/GET",
+                        "/PUT",
+                        "/PATCH",
+                        "/DELETE"
+                    ],
+                    "Managers": [
+                        "/POST",
+                        "/GET",
+                        "/PUT",
+                        "/PATCH"
+                    ],
+                    "Users": [
+                        "/GET"
+                    ]
+                }
+            }
+        }
+    ],
+    "resourceName": "hrapi",
+    "apiName": "hrapi",
+    "authResourceName": "hrResources",
+    "functionArns": [
+        {
+            "lambdaFunction": "deparments"
+        },
+        {
+            "lambdaFunction": "Salaries"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-hr-resources-app-dev-134601-authRole",
+        "unAuthRoleName": "amplify-hr-resources-app-dev-134601-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "deparments",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        },
+        {
+            "category": "auth",
+            "resourceName": "hrResources",
+            "attributes": [
+                "UserPoolId"
+            ]
+        },
+        {
+            "category": "auth",
+            "resourceName": "userPoolGroups",
+            "attributes": [
+                "SuperUsersGroupRole"
+            ]
+        },
+        {
+            "category": "auth",
+            "resourceName": "userPoolGroups",
+            "attributes": [
+                "ManagersGroupRole"
+            ]
+        },
+        {
+            "category": "auth",
+            "resourceName": "userPoolGroups",
+            "attributes": [
+                "UsersGroupRole"
+            ]
+        },
+        {
+            "category": "function",
+            "resourceName": "Salaries",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ],
+    "uuid": "e396faa3"
+}

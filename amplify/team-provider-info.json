@@ -15,11 +15,15 @@
                 "hrResourcesPostConfirmation": {
                     "GROUP": "Users"
                 },
-                "AdminQueries97ffa857": {}
+                "AdminQueries97ffa857": {},
+                "deparments": {},
+                "Salaries": {}
             },
             "auth": {
-                "hrResources": {},
-                "userPoolGroups": {}
+                "hrResources": {
+                    "googleClientId": "621492998975-6do6ljku0ddqkf5dtakn7ifvjq5ifteb.apps.googleusercontent.com",
+                    "hostedUIProviderCreds": "[{\"ProviderName\":\"Google\",\"client_id\":\"621492998975-6do6ljku0ddqkf5dtakn7ifvjq5ifteb.apps.googleusercontent.com\",\"client_secret\":\"9A_NatZuzwM5ew8humdZYjAd\"}]"
+                }
             }
         }
     },
@@ -37,14 +41,20 @@
         "categories": {
             "auth": {
                 "userPoolGroups": {},
-                "hrResources": {}
+                "hrResources": {
+                    "hostedUIProviderCreds": "[{\"ProviderName\":\"Google\",\"client_id\":\"621492998975-6do6ljku0ddqkf5dtakn7ifvjq5ifteb.apps.googleusercontent.com\",\"client_secret\":\"9A_NatZuzwM5ew8humdZYjAd\"}]",
+                    "googleClientId": "621492998975-6do6ljku0ddqkf5dtakn7ifvjq5ifteb.apps.googleusercontent.com"
+                }
             },
             "function": {
                 "hrResourcesPostConfirmation": {
                     "GROUP": "Users"
                 },
                 "AdminQueries97ffa857": {},
-                "hrResources": {}
+                "hrResources": {},
+                "deparments": {},
+                "Salaries": {},
+                "departments": {}
             }
         }
     }

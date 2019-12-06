@@ -85,11 +85,57 @@
             }
         },
     
+        "ManagersGroup": {
+          "Type" : "AWS::Cognito::UserPoolGroup",
+          "Properties" : {
+              "GroupName" : "Managers",
+              "Precedence" : 2,
+              "RoleArn" : {
+                "Fn::GetAtt": [
+                    "ManagersGroupRole",
+                    "Arn"
+                ]
+              },
+              "UserPoolId" : {
+                "Ref": "authhrResourcesUserPoolId"
+              } 
+            }
+        },
+        "ManagersGroupRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "RoleName":{
+                    "Fn::Join": [
+                        "",
+                        [
+                          {
+                            "Ref": "authhrResourcesUserPoolId"
+                          },
+                          "-ManagersGroupRole"
+                        ]
+                    ]
+                },
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Sid": "",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Federated": "cognito-identity.amazonaws.com"
+                            },
+                            "Action": "sts:AssumeRoleWithWebIdentity"
+                        }
+                    ]
+                }
+            }
+        },
+    
         "UsersGroup": {
           "Type" : "AWS::Cognito::UserPoolGroup",
           "Properties" : {
               "GroupName" : "Users",
-              "Precedence" : 2,
+              "Precedence" : 3,
               "RoleArn" : {
                 "Fn::GetAtt": [
                     "UsersGroupRole",
@@ -332,6 +378,17 @@
             "Value": {
                 "Fn::GetAtt": [
                     "SuperUsersGroupRole",
+                    "Arn"
+                ]
+            }
+         
+        },
+        
+      
+        "ManagersGroupRole": {
+            "Value": {
+                "Fn::GetAtt": [
+                    "ManagersGroupRole",
                     "Arn"
                 ]
             }

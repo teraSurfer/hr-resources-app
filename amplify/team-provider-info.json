@@ -14,9 +14,36 @@
             "function": {
                 "hrResourcesPostConfirmation": {
                     "GROUP": "Users"
-                }
+                },
+                "AdminQueries97ffa857": {}
             },
             "auth": {
+                "hrResources": {},
+                "userPoolGroups": {}
+            }
+        }
+    },
+    "prod": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-hr-resources-app-prod-104823-authRole",
+            "UnauthRoleArn": "arn:aws:iam::104349172281:role/amplify-hr-resources-app-prod-104823-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::104349172281:role/amplify-hr-resources-app-prod-104823-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-hr-resources-app-prod-104823-deployment",
+            "UnauthRoleName": "amplify-hr-resources-app-prod-104823-unauthRole",
+            "StackName": "amplify-hr-resources-app-prod-104823",
+            "StackId": "arn:aws:cloudformation:us-east-1:104349172281:stack/amplify-hr-resources-app-prod-104823/fb7fd930-1858-11ea-be62-0e2d599e16c7"
+        },
+        "categories": {
+            "auth": {
+                "userPoolGroups": {},
+                "hrResources": {}
+            },
+            "function": {
+                "hrResourcesPostConfirmation": {
+                    "GROUP": "Users"
+                },
+                "AdminQueries97ffa857": {},
                 "hrResources": {}
             }
         }

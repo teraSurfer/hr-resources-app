@@ -1,4 +1,4 @@
-name: 'HR Push to Prod'
+name: 'HR Publish to Prod'
 on: 
   push:
     branches: 

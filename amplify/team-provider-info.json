@@ -16,8 +16,10 @@
                     "GROUP": "Users"
                 },
                 "AdminQueries97ffa857": {},
+                "hrResources": {},
                 "deparments": {},
-                "Salaries": {}
+                "Salaries": {},
+                "departments": {}
             },
             "auth": {
                 "hrResources": {

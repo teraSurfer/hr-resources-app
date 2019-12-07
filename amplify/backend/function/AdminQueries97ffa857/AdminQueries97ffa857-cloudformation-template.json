@@ -67,8 +67,8 @@
 				"Runtime": "nodejs8.10",
 				"Timeout": "25",
 				"Code": {
-					"S3Bucket": "amplify-hr-resources-app-dev-134601-deployment",
-					"S3Key": "amplify-builds/AdminQueries97ffa857-77777a424f4163336479-build.zip"
+					"S3Bucket": "amplify-hr-resources-app-prod-104823-deployment",
+					"S3Key": "amplify-builds/AdminQueries97ffa857-70636a42463871553575-build.zip"
 				}
 			}
 		},

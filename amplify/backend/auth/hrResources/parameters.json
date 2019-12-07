@@ -93,5 +93,5 @@
         "Google"
     ],
     "hostedUIProviderMeta": "[{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"phone_number\":\"phoneNumbers\",\"username\":\"sub\"}}]",
-    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"implicit\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://hr.terasurfer.com/logged-in/\"],\"LogoutURLs\":[\"https://hr.terasurfer.com/signout/\"]}"
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"implicit\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://hr.terasurfer.com/logged-in/\"],\"LogoutURLs\":[\"https://hr.terasurfer.com/signout/\",\"https://localhost:8080/\"]}"
 }

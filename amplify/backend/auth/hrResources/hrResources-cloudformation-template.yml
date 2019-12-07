@@ -124,13 +124,10 @@ Parameters:
               
   dependsOn:
     Type: CommaDelimitedList
-                          
+              
   authProviders:
     Type: CommaDelimitedList
       
-  googleClientId:
-    Type: String
-              
   hostedUIDomainName:
     Type: String
                       
@@ -143,9 +140,12 @@ Parameters:
   hostedUIProviderCreds:
     Type: String
               
+  googleClientId:
+    Type: String
+              
   oAuthMetadata:
     Type: String
-            
+                        
 Conditions:
   ShouldNotCreateEnvResources: !Equals [ !Ref env, NONE ]
 

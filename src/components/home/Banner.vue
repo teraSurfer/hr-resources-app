@@ -10,7 +10,7 @@
             <div class="banner-content text-light">
                 <div class="text-center">
                     <fa size="5x" icon="handshake" />
-                    <h2 class="banner-title display-1">Human Resources</h2>
+                    <h2 class="banner-title display-1">Human Resources - app</h2>
                     <h4>Manage your HR with ease.</h4>
                     <b-btn size="lg" v-if="!isLoggedIn" to="/login" variant="outline-light" class="mt-4"> <b>Get Started</b> <fa icon="chevron-right" /></b-btn>
                     <b-btn size="lg" v-if="isLoggedIn" to="/dashboard" variant="outline-light" class="mt-4"> <b>Get Started</b> <fa icon="chevron-right" /></b-btn>

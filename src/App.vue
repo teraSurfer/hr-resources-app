@@ -16,8 +16,6 @@ export default {
     ...components
   },
   async mounted() {
-    console.log(await this.$Amplify.Auth.currentSession());
-    console.log(await this.$Amplify.Auth.currentCredentials());
     AmplifyEventBus.$on("authState", async authState => {
       switch (authState) {
         case "signedIn": {

@@ -46,7 +46,7 @@ export default {
     async loadCount() {
       let response = await this.$Amplify.API.get(
         "AdminQueries",
-        "/listGroupsForUser?username=5e04dcd0-e900-4fcd-be04-001519900cdb",
+        "/listGroupsForUser?username=398223fa-3e88-40d2-b3db-5f8eafa1a0ac",
         {
           headers: {
             "Content-Type": "application/json",
